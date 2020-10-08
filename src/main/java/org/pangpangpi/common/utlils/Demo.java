@@ -72,7 +72,8 @@ public class Demo {
 
     public static void testTaskRun() {
         TaskInfo taskInfo = Tasks.startTask(natureNumberGenerator(1000), natureNumberConsumer(), 2, 1);
-        Tasks.waitForFinish(taskInfo.getTaskId());
-        logger.info("Task info:{}", taskInfo);
+        taskInfo.waitForFinish();
+        logger.info("Produce speed:{}", taskInfo.getProduceSpeed());
+        logger.info("Consume speed:{}", taskInfo.getConsumeSpeed());
     }
 }

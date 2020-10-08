@@ -52,6 +52,14 @@ public class TaskInfo {
         this.consumeSpeed = consumeSpeed;
     }
 
+    public void waitForFinish() {
+        Tasks.waitForFinish(getTaskId());
+    }
+
+    public void stopAndRemove() {
+        Tasks.removeTask(getTaskId());
+    }
+
     @Override
     public String toString() {
         return "TaskInfo{" +
