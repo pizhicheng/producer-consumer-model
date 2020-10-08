@@ -1,18 +1,22 @@
 package org.pangpangpi.common.utlils;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.pangpangpi.common.utlils.consumer.Consumer;
 import org.pangpangpi.common.utlils.producer.Producer;
+import org.pangpangpi.common.utlils.tasks.TaskInfo;
+import org.pangpangpi.common.utlils.tasks.Tasks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Unit test for simple App.
  */
-public class DemoTest
-{
+public class DemoTest {
 
     Logger logger = LoggerFactory.getLogger(DemoTest.class);
     private Producer<Integer> natureNumberGenerator(int i) {
@@ -27,32 +31,48 @@ public class DemoTest
 
             @Override
             public boolean hasNext() {
-                return atomicInteger.get() < i;
+                return atomicInteger.get() <= i;
             }
         };
     }
 
-    private Consumer<Integer> natureNumberConsumer() {
-        return new Consumer<Integer>() {
-            @Override
-            public void accept(Integer data) {
-                logger.info("Consume number: {}", data);
-            }
-        };
+    private List<Integer> getSortedLists(int max) {
+        List<Integer> integers = new ArrayList<>(max);
+        for (int i = 1; i <= max; i++) {
+            integers.add(i);
+        }
+        return integers;
     }
 
     @Test
     public void testProducerAndConsumer() throws InterruptedException {
         logger.info("Running producer and consumer in backend");
-        ProduceAndConsumes.run(natureNumberGenerator(100), natureNumberConsumer(), 10, 2);
+        List<Integer> list = new CopyOnWriteArrayList<>();
+        ProduceAndConsumes.run(natureNumberGenerator(100),
+                list::add, 2, 5);
+        Assert.assertEquals(100, list.size());
+        Assert.assertTrue(list.containsAll(getSortedLists(100)));
     }
 
     @Test
     public void testProducerAndConsumerBackend() throws InterruptedException {
         logger.info("Running producer and consumer in backend");
+        List<Integer> list = new CopyOnWriteArrayList<>();
         ProduceAndConsume<Integer> produceAndConsume = ProduceAndConsumes
-                .runBackend(natureNumberGenerator(100), natureNumberConsumer(), 10, 2);
+                .runBackend(natureNumberGenerator(100), list::add, 5, 2);
         logger.info("Waiting for finish");
         produceAndConsume.waitForFinish();
+        Assert.assertEquals(100, list.size());
+        Assert.assertTrue(list.containsAll(getSortedLists(100)));
+    }
+
+    @Test
+    public void testTaskRun() {
+        List<Integer> list = new CopyOnWriteArrayList<>();
+        TaskInfo taskInfo = Tasks.startTask(natureNumberGenerator(1000), list::add, 2, 2);
+        Tasks.waitForFinish(taskInfo.getTaskId());
+        Assert.assertEquals(1000, list.size());
+        Assert.assertTrue(list.containsAll(getSortedLists(1000)));
+        logger.info("Task info:{}", taskInfo);
     }
 }

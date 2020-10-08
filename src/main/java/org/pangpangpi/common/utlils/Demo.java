@@ -59,7 +59,7 @@ public class Demo {
 
     public static void testProducerAndConsumer() throws InterruptedException {
         logger.info("Running producer and consumer");
-        ProduceAndConsumes.run(natureNumberGenerator(100), natureNumberConsumer(), 10, 2);
+        ProduceAndConsumes.run(natureNumberGenerator(100), natureNumberConsumer(), 1, 20);
     }
 
     public static void testProducerAndConsumerBackend() throws InterruptedException {
