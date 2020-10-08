@@ -1,4 +1,4 @@
-package org.pangpangpi.common.utlils.producer;
+package io.github.pizhicheng.common.producer;
 
 import javax.annotation.Nullable;
 

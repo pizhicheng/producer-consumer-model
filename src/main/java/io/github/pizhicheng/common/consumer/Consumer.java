@@ -1,4 +1,4 @@
-package org.pangpangpi.common.utlils.consumer;
+package io.github.pizhicheng.common.consumer;
 
 public interface Consumer<T> {
 

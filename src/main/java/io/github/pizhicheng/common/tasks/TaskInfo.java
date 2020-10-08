@@ -1,4 +1,6 @@
-package org.pangpangpi.common.utlils.tasks;
+package io.github.pizhicheng.common.tasks;
+
+import io.github.pizhicheng.common.ProduceAndConsume;
 
 public class TaskInfo {
 
@@ -7,6 +9,8 @@ public class TaskInfo {
     private boolean finished;
 
     private String taskMessage;
+
+    private ProduceAndConsume<?> produceAndConsume;
 
     private SpeedReport produceSpeed;
 
@@ -34,6 +38,14 @@ public class TaskInfo {
 
     public void setTaskMessage(String taskMessage) {
         this.taskMessage = taskMessage;
+    }
+
+    public ProduceAndConsume<?> getProduceAndConsume() {
+        return produceAndConsume;
+    }
+
+    public void setProduceAndConsume(ProduceAndConsume<?> produceAndConsume) {
+        this.produceAndConsume = produceAndConsume;
     }
 
     public SpeedReport getProduceSpeed() {
@@ -66,6 +78,7 @@ public class TaskInfo {
                 "taskId=" + taskId +
                 ", finished=" + finished +
                 ", taskMessage='" + taskMessage + '\'' +
+                ", produceAndConsume=" + produceAndConsume +
                 ", produceSpeed=" + produceSpeed +
                 ", consumeSpeed=" + consumeSpeed +
                 '}';

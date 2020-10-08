@@ -1,4 +1,4 @@
-package org.pangpangpi.common.utlils.tasks;
+package io.github.pizhicheng.common.tasks;
 
 public class SpeedReport {
 

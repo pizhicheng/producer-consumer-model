@@ -1,9 +1,9 @@
-package org.pangpangpi.common.utlils;
+package io.github.pizhicheng.common;
 
-import org.pangpangpi.common.utlils.consumer.Consumer;
-import org.pangpangpi.common.utlils.producer.Producer;
-import org.pangpangpi.common.utlils.tasks.TaskInfo;
-import org.pangpangpi.common.utlils.tasks.Tasks;
+import io.github.pizhicheng.common.consumer.Consumer;
+import io.github.pizhicheng.common.tasks.TaskInfo;
+import io.github.pizhicheng.common.tasks.Tasks;
+import io.github.pizhicheng.common.producer.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

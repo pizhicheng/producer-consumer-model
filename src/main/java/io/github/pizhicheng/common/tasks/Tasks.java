@@ -1,9 +1,9 @@
-package org.pangpangpi.common.utlils.tasks;
+package io.github.pizhicheng.common.tasks;
 
-import org.pangpangpi.common.utlils.ProduceAndConsume;
-import org.pangpangpi.common.utlils.ProduceAndConsumes;
-import org.pangpangpi.common.utlils.consumer.Consumer;
-import org.pangpangpi.common.utlils.producer.Producer;
+import io.github.pizhicheng.common.consumer.Consumer;
+import io.github.pizhicheng.common.ProduceAndConsume;
+import io.github.pizhicheng.common.ProduceAndConsumes;
+import io.github.pizhicheng.common.producer.Producer;
 
 import javax.annotation.Nullable;
 import java.time.Instant;

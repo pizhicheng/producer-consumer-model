@@ -1,10 +1,10 @@
-package org.pangpangpi.common.utlils;
+package io.github.pizhicheng.common;
 
+import io.github.pizhicheng.common.tasks.TaskInfo;
+import io.github.pizhicheng.common.tasks.Tasks;
 import org.junit.Assert;
 import org.junit.Test;
-import org.pangpangpi.common.utlils.producer.Producer;
-import org.pangpangpi.common.utlils.tasks.TaskInfo;
-import org.pangpangpi.common.utlils.tasks.Tasks;
+import io.github.pizhicheng.common.producer.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
